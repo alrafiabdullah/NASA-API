@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./components/Home";
+import axios from "axios";
+import React, { useState } from "react";
 
 function App() {
+  const [imageURL, setImageURL] = useState("");
+
+  axios
+    .get(
+      "https://api.nasa.gov/planetary/apod?api_key=vajGJMdv5V8KjRss7EhwK52vwq8Q74hJ0qfcG4VA"
+    )
+    .then((res) => {
+      setImageURL(res.data.hdurl);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ backgroundImage: "URL(" + imageURL + ")" }}>
+      <Home />
     </div>
   );
 }
