@@ -56,7 +56,7 @@ function Home() {
     <div className="container">
       <animated.h3 style={buttonFade}>Home!</animated.h3>
       <animated.button
-        className="btn btn-primary"
+        className="btn btn-primary m-3"
         onClick={(e) => fetchNasa(e.currentTarget)}
         style={fade}
       >
@@ -64,13 +64,13 @@ function Home() {
       </animated.button>
       <HashLoader size={50} color={"white"} loading={isLoading} />
       <animated.button
-        className="btn btn-primary"
+        className="btn btn-primary m-3"
         onClick={() => setToggle(!isToggled)}
         style={fade}
       >
         Toggle Color
       </animated.button>
-      <div className="row">
+      <div className="row m-3">
         {asteroidArr.map((asteroid) => {
           // console.log(asteroid);
           return (
